@@ -1,0 +1,12 @@
+URxvt.font:			xft:monospace:size=11
+
+URxvt.scrollBar:	false
+
+URxvt.transparent:	true
+URxvt.shading: 30
+
+URxvt.fading: 30
+
+Xcursor.theme: Vanilla-DMZ
+
+
