@@ -188,7 +188,7 @@ bindsym $mod+p exec playerctl play
 bindsym $mod+Shift+p playerctl pause
 
 # wallpaper 
-exec_always wal -i ~/Pictures/Wallpapers/wal.jpeg -n
+exec_always wal -i ~/Pictures/Wallpapers/wal.jpeg -cn 
 exec_always feh --bg-fill  ~/Pictures/Wallpapers/wal.jpeg
 
 # gaps settings
