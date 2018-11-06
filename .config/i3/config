@@ -213,6 +213,9 @@ bindsym $mod+Shift+n exec telegram-desktop
 # Start Spotify
 bindsym $mod+m exec spotify
 
+# Screenshot
+bindsym $mod+Shift+< exec scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $f ~/Pictures/'
+
 
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use
@@ -233,4 +236,4 @@ client.placeholder      $bg     $bg     $fg  $bg       $bg
 client.background       $bg
 
 # PROTIP: You can also dynamically set dmenu's colors this way:
-bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
+bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg" -b -h 25 -m 0
