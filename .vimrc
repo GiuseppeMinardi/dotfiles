@@ -17,10 +17,13 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'jalvesaq/Nvim-R'
 
 " Install vimtex (LaTeX autocompletion)
-"Plugin 'lervag/vimtex'
+Plugin 'lervag/vimtex'
 "
 " Install You-complete-Me
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
+
+""Install vim markdown (markdown stuf)
+Bundle 'gabrielelana/vim-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -102,12 +105,6 @@ set t_vb=
 " Display line numbers on the left
 set number
  
-" Note that not everyone likes working this way (with the hidden option).
-" Alternatives include using tabs or split windows instead of re-using the same
-" window as mentioned above, and/or either of the following options:
-" set confirm
-" set autowriteall
- 
 " Better command-line completion
 set wildmode=longest,list,full
  
@@ -117,9 +114,6 @@ set showcmd
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
 set hlsearch
-
-
-
 
 " Enable syntax highlighting
 syntax on
@@ -131,18 +125,11 @@ map <F3> :!wc <C-R>%<CR>
 " Spell-check set to F6:
 map <F6> :setlocal spell! spelllang=en_us,it<CR>
 
-
-
-
 "BRACKETS AUTOCOMPLETION:
 inoremap " ""<++><Esc>4hi
 inoremap ( ()<++><Esc>4hi
 inoremap [ []<++><Esc>4hi
 inoremap { {}<++><Esc>4hi
-
-
-
-
 
 "
  "____        _                  _
@@ -152,47 +139,47 @@ inoremap { {}<++><Esc>4hi
  "|____/|_| |_|_| .__/| .__/ \___|\__|___/
  "               "|_|   |_|
  "
- ""LATEX
-inoremap ?? <Esc>/<++><Enter>"_c4l
+ ""LATEX SNIPPETS:
+    inoremap ?? <Esc>/<++><Enter>"_c4l
 
 " Compile documents using xelatex
-autocmd FileType tex nnoremap <buffer> <C-C> :!xelatex %<Enter>
+    autocmd FileType tex nnoremap <buffer> <C-C> :!xelatex %<Enter>
 " Open Bbliography
-autocmd Filetype tex inoremap <C-B> <Esc>:vsplit %:r.bib%<Enter>
+    autocmd Filetype tex inoremap <C-B> <Esc>:vsplit %:r.bib%<Enter>
 " Code snippets
-autocmd FileType tex inoremap ;fr \begin{frame}{}<Enter><Enter><++><Enter><Enter>\end{frame}<Enter><Enter><++><Esc>6kf}f}i
-autocmd FileType tex inoremap ;em \emph{}<++><Esc>T{i
-autocmd FileType tex inoremap ;bf \textbf{}<++><Esc>T{i
-autocmd FileType tex inoremap ;it \textit{}<++><Esc>T{i
-autocmd FileType tex inoremap ;ct \cite{}<++><Esc>T{i
-autocmd FileType tex inoremap ;en \begin{enumerate}<Enter><Enter>\end{enumerate}<Enter><Enter><++><Esc>3kA\item<Space>
-autocmd FileType tex inoremap ;eq \begin{equation}<Enter><Enter><Enter>\end{equation}<Enter><Enter><++><Esc>5ki
-autocmd FileType tex inoremap ;al \begin{align}<Enter><Enter><Enter>\end{align}<Enter><Enter><++><Esc>5ki
-autocmd FileType tex inoremap ;quote \begin{quote}<Enter><Enter><Enter>\end{quote}<Enter><Enter><++><Esc>5ki
-autocmd FileType tex inoremap ;in \begin{itemize}<Enter><Enter>\end{itemize}<Enter><Enter><++><Esc>3kA\item<Space>
-autocmd FileType tex inoremap ;li <Enter>\item<Space>
-autocmd FileType tex inoremap ;ref \ref{}<Space><++><Esc>T{i
-autocmd FileType tex inoremap ;tab \begin{tabular}<Enter><++><Enter>\end{tabular}<Enter><Enter><++><Esc>4kA{}<Esc>i
-autocmd FileType tex inoremap ;link \href{}{<++>}<Space><++><Esc>2T{i
-autocmd FileType tex inoremap ;chap \chapter{}<Enter><Enter><++><Esc>2kf}i
-autocmd FileType tex inoremap ;sec \section{}<Enter><Enter><++><Esc>2kf}i
-autocmd FileType tex inoremap ;fn \footnote{}<++><Esc>5j
-autocmd FileType tex inoremap ;ssec \subsection{}<Enter><Enter><++><Esc>2kf}i
-autocmd FileType tex inoremap ;sssec \subsubsection{}<Enter><Enter><++><Esc>2kf}i
-autocmd FileType tex inoremap ;col \begin{columns}[T]<Enter>\begin{column}{.5\textwidth}<Enter><Enter>\end{column}<Enter>\begin{column}{.5\textwidth}<Enter><++><Enter>\end{column}<Enter>\end{columns}<Esc>5kA
-autocmd FileType tex inoremap ;pkg \usepackage{}<++><Esc>4hi
-autocmd FileType tex inoremap ;opkg \usepackage[]{<++>}<++><Esc>10hi
+    autocmd FileType tex inoremap ;fr \begin{frame}{}<Enter><Enter><++><Enter><Enter>\end{frame}<Enter><Enter><++><Esc>6kf}f}i
+    autocmd FileType tex inoremap ;em \emph{}<++><Esc>T{i
+    autocmd FileType tex inoremap ;bf \textbf{}<++><Esc>T{i
+    autocmd FileType tex inoremap ;it \textit{}<++><Esc>T{i
+    autocmd FileType tex inoremap ;ct \cite{}<++><Esc>T{i
+    autocmd FileType tex inoremap ;en \begin{enumerate}<Enter><Enter>\end{enumerate}<Enter><Enter><++><Esc>3kA\item<Space>
+    autocmd FileType tex inoremap ;eq \begin{equation}<Enter><Enter><Enter>\end{equation}<Enter><Enter><++><Esc>5ki
+    autocmd FileType tex inoremap ;al \begin{align}<Enter><Enter><Enter>\end{align}<Enter><Enter><++><Esc>5ki
+    autocmd FileType tex inoremap ;quote \begin{quote}<Enter><Enter><Enter>\end{quote}<Enter><Enter><++><Esc>5ki
+    autocmd FileType tex inoremap ;in \begin{itemize}<Enter><Enter>\end{itemize}<Enter><Enter><++><Esc>3kA\item<Space>
+    autocmd FileType tex inoremap ;li <Enter>\item<Space>
+    autocmd FileType tex inoremap ;ref \ref{}<Space><++><Esc>T{i
+    autocmd FileType tex inoremap ;tab \begin{tabular}<Enter><++><Enter>\end{tabular}<Enter><Enter><++><Esc>4kA{}<Esc>i
+    autocmd FileType tex inoremap ;link \href{}{<++>}<Space><++><Esc>2T{i
+    autocmd FileType tex inoremap ;chap \chapter{}<Enter><Enter><++><Esc>2kf}i
+    autocmd FileType tex inoremap ;sec \section{}<Enter><Enter><++><Esc>2kf}i
+    autocmd FileType tex inoremap ;fn \footnote{}<++><Esc>5j
+    autocmd FileType tex inoremap ;ssec \subsection{}<Enter><Enter><++><Esc>2kf}i
+    autocmd FileType tex inoremap ;sssec \subsubsection{}<Enter><Enter><++><Esc>2kf}i
+    autocmd FileType tex inoremap ;col \begin{columns}[T]<Enter>\begin{column}{.5\textwidth}<Enter><Enter>\end{column}<Enter>\begin{column}{.5\textwidth}<Enter><++><Enter>\end{column}<Enter>\end{columns}<Esc>5kA
+    autocmd FileType tex inoremap ;pkg \usepackage{}<++><Esc>4hi
+    autocmd FileType tex inoremap ;opkg \usepackage[]{<++>}<++><Esc>10hi
 
-" Math and begin/end autocompletion for tex and rmd
-autocmd FileType tex,rmd inoremap ;begin \begin{}<Enter><Enter><Enter><Enter>\end{<-->}<Enter><Enter><++><Esc>6k$i
-autocmd FileType tex,rmd inoremap <C-V> <Esc>"ayiw/<--><Enter>di{h"ap2ki<Tab>
-autocmd FileType tex,rmd inoremap ;fz \frac{}{<++>}<++><Esc>10hi
-autocmd FileType tex,rmd inoremap ;(	\left( \right)<Esc>7hi
-autocmd FileType tex,rmd inoremap ;[	\left[ \right}<Esc>7hi
-autocmd FileType tex,rmd inoremap ;{	\left{ \right}<Esc>7hi
+" SNIPPETS FOR LaTeX AND MARKDDOWN:
+    autocmd FileType tex,markdown inoremap ;begin \begin{}<Enter><Enter><Enter><Enter>\end{<-->}<Enter><Enter><++><Esc>6k$i
+    autocmd FileType tex,markdown,rmd inoremap <C-X> <Esc>"ayiw/<--><Enter>di{h"ap2ki<Tab>
+    autocmd FileType tex,markdown,rmd inoremap ;fz \frac{}{<++>}<++><Esc>10hi
+    autocmd FileType tex,markdown,rmd inoremap ;(	\left( \right)<Esc>7hi
+    autocmd FileType tex,markdown,rmd inoremap ;[	\left[ \right}<Esc>7hi
+    autocmd FileType tex,markdown,rmd inoremap ;{	\left{ \right}<Esc>7hi
+	autocmd FileType markdown,tex,rmd inoremap ... \dots
 
-
-"MARKDOWN
+" MARKDOWN:
 	autocmd FileType markdown,rmd inoremap ?? <Esc>/<++><Enter>"_c4l
 	autocmd FileType markdown,rmd inoremap ;fn ^[]<++><Esc>4hi
 	autocmd FileType markdown,rmd inoremap ;bf ****<++><Esc>F*hi
@@ -202,17 +189,15 @@ autocmd FileType tex,rmd inoremap ;{	\left{ \right}<Esc>7hi
 	autocmd FileType markdown,rmd inoremap ;img ![](<++>)<++><Esc>F[a
 	autocmd FileType markdown,rmd inoremap ;a [](<++>)<++><Esc>F[a
 	autocmd FileType markdown,rmd inoremap ;l --------<Enter>
-	autocmd FileType markdown,rmd,tex inoremap ... \dots
 	autocmd FileType markdown,rmd inoremap ;r ```{r}<CR>```<CR><CR><esc>2kO
 	autocmd FileType markdown,rmd inoremap ;p ```{python}<CR>```<CR><CR><esc>2kO
 	autocmd FileType markdown,rmd inoremap ;c ```<cr>```<cr><cr><esc>2kO
-	autocmd FileType markdown nnoremap <C-C> :!pandoc % --pdf-engine=xelatex -o %:r.pdf<Enter>
+	autocmd FileType markdown,rmd nnoremap <C-C> :!pandoc % --pdf-engine=xelatex -o %:r.pdf<Enter>
 
 
-"PYTHON	
-autocmd FileType py,python nnoremap <buffer> <C-R> :exec '!clear; python' shellescape(@%, 1)<cr>
-autocmd FileType py,python inoremap ;for	for  in <++>:<Enter><Enter><++><Esc>2k0fihi
-autocmd FileType py,python inoremap ;while	while :<Enter><Enter><++><Esc>2k0f:i
-autocmd FileType py,python inoremap ;if		if :<Enter><++><Esc>2kf:i
-autocmd FileType py,python inoremap ;ds		import numpy as np<Enter>import pandas as pd<Enter>import matplotlib.pyplot as plt<Enter>import os<Enter><Enter>
-
+" PYTHON:	
+    autocmd FileType python nnoremap <buffer> <C-R> :exec '!clear; python' shellescape(@%, 1)<cr>
+    autocmd FileType python inoremap ;for	for  in <++>:<Enter><Enter><++><Esc>2k0fihi
+    autocmd FileType python inoremap ;while	while :<Enter><Enter><++><Esc>2k0f:i
+    autocmd FileType python inoremap ;if		if :<Enter><++><Esc>2kf:i
+    autocmd FileType python inoremap ;ds		import numpy as np<Enter>import pandas as pd<Enter>import matplotlib.pyplot as plt<Enter>import os<Enter><Enter>
