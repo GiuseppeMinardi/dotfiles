@@ -189,8 +189,8 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 	#decrease screen brightne
 bindsym $mod+p exec playerctl play
 bindsym $mod+Shift+p playerctl pause
 
-# wallpaper 
-exec_always wal -i ~/Pictures/Wallpapers/wal.jpeg -cn 
+# wallpaper
+exec_always wal -i ~/Pictures/Wallpapers/wal.jpeg -cn
 exec_always feh --bg-fill  ~/Pictures/Wallpapers/wal.jpeg
 
 # gaps settings
@@ -205,7 +205,7 @@ bindsym $mod+Shift+s exec arandr
 bindsym $mod+Shift+m exec urxvt -e ranger
 
 # Start Firefox
-bindsym $mod+Shift+b exec firefox 
+bindsym $mod+Shift+b exec firefox
 
 # Start Telegramm
 bindsym $mod+Shift+n exec telegram-desktop
@@ -213,8 +213,12 @@ bindsym $mod+Shift+n exec telegram-desktop
 # Start Spotify
 bindsym $mod+m exec spotify
 
-# Screenshot
-bindsym $mod+Shift+< exec scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $f ~/Pictures/'
+
+# Start Okular
+bindsym $mod+Shift+o exec okular
+
+# Dual screen
+xrandr --output eDP1 --primary --pos 0x0 --output HDMI1 --pos 1920x0
 
 
 # Set colors from Xresources
@@ -237,3 +241,6 @@ client.background       $bg
 
 # PROTIP: You can also dynamically set dmenu's colors this way:
 bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg" -b -h 25 -m 0
+
+# Detect number of monitors
+# xrandr --output HDMI1 --mode 1920x1080 --pos 1912x0 --rotate normal --output VIRTUAL1 --off --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
